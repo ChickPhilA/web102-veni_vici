@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import PokeDisplay from './components/PokeDisplay'
+import BanList from './components/BanList'
 import axios from 'axios'
 import './App.css'
 
@@ -15,10 +17,20 @@ function App() {
   const [banList, setBanList] = useState([])
   const [history, setHistory] = useState([])
 
+  {/*
+    I was thinking of the Pokémon class being like this:
+    -Name (will be displayed below the photo)
+    -Photo
+
+    The actual attributes:
+    -Type(s)
+    -Abilities: [] 
+    -A random move from its moveset
+  */}
 
   const fetchPokemon = async () => {
     const query = `https://pokeapi.co/api/v2/pokemon/${generateRandomPokemon()}`
-    const data = await axios.get(query)
+    const response = await axios.get(query)
   }
 
 
@@ -26,7 +38,7 @@ function App() {
   return (
     <>
       <div>
-        
+        <PokeDisplay />
       </div>
     </>
   )
