@@ -40,6 +40,8 @@ The following **additional** features are implemented:
 
 * [ ] List anything else that you added to improve the site's functionality!
 
+Credit to Digital Moons on itch.io for the pixel sky background: https://digitalmoons.itch.io/pixel-skies-demo
+
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
