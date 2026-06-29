@@ -23,6 +23,38 @@ body {
   text-align: center;
 }
 
+.pokemon-display {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.attribute-btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  text-transform: capitalize;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: white;
+  cursor: pointer;
+  margin: 0.25rem;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.attribute-btn:active {
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(3px);
+  box-shadow: 0 2px 0;
+}
+
 .generate-btn {
   font-family: 'Fredoka One', cursive;
   font-size: 1.2rem;
