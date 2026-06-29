@@ -18,32 +18,28 @@ function App() {
   const [history, setHistory] = useState([])
   const [randomMoveIndex, setRandomMoveIndex] = useState(null)
 
-  {/*
-    I was thinking of the Pokémon class being like this:
-    -Name (will be displayed below the photo)
-    -Photo
-
-    The actual attributes:
-    -Type(s)
-    -Abilities: [] 
-    -A random move from its moveset
-      -(Get the length, pick a random number, and access the first name)
-  */}
-
   const fetchPokemon = async () => {
     const query = `https://pokeapi.co/api/v2/pokemon/${generateRandomPokemon()}`
     const response = await axios.get(query)
 
+    const randomMoveIndex = Math.floor(Math.random() * response.data.moves.length)
+    const isBanned = response.data.types.some((typeObj) => banList.includes(typeObj.type.name)) ||
+      response.data.abilities.some((abilityObj) => banList.includes(abilityObj.ability.name)) ||
+      banList.includes(response.data.moves[randomMoveIndex].move.name)
+
+    if(isBanned) {
+      fetchPokemon()
+    }
+    else {
     // setting the Pokemon as the whole response
-    setPokemon(response.data)
-    setRandomMoveIndex(Math.floor(Math.random() * response.data.moves.length))
+      setPokemon(response.data)
+      setRandomMoveIndex(randomMoveIndex)
+    }
   }
-
-
 
   return (
     <>
-      <div>
+      <div className="layout">
         <PokeDisplay
           pokemon={pokemon}
           fetchPokemon={fetchPokemon}
@@ -51,6 +47,8 @@ function App() {
           setBanList={setBanList}
           randomMoveIndex={randomMoveIndex}
         />
+
+        <BanList banList={banList} setBanList={setBanList}/>
       </div>
     </>
   )
