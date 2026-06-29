@@ -1,6 +1,10 @@
 const BanList = () => {
     return(
         <>
+            <div className="ban-container">
+
+                
+            </div>
         </>
     )
 }
